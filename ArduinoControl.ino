@@ -1,5 +1,5 @@
 const int switchPin = 2;           // pin the SNES power switch is connected to
-const int powerLedPin = 13;        // pin the SNES power LED is connected to
+const int powerLedPin = 8;        // pin the SNES power LED is connected to
 const int mainPowerRelayPin = 6;   // pin for the 5V relay that provides power to the Rpi
 const int piStatusPin = 7;         // pin for telling the pi when it is time to shutdown (shutdown = 0, run = 1)
 
@@ -37,11 +37,11 @@ void loop() {
 
 //Power On
 //Turn on power LED
-//Switch on power relay to provide power to Rpi and logic converter
+//Switch on power relay to provide power to Rpi and logic converter (Relay triggers at Low)
 void powerOn(){
   pinHigh(powerLedPin);
   pinHigh(piStatusPin);
-  pinHigh(mainPowerRelayPin);
+  pinLow(mainPowerRelayPin);
     
 }
 
@@ -53,7 +53,7 @@ void powerOff(){
   pinLow(powerLedPin);
   pinLow(piStatusPin);
   delay(3000); //TODO: change from test time of 3sec to 30
-  pinLow(mainPowerRelayPin);  
+  pinHigh(mainPowerRelayPin);  
 }
 
 //Move a pin to high and output that change to serial
