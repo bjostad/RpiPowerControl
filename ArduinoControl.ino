@@ -1,7 +1,7 @@
 const int switchPin = 2;           // pin the SNES power switch is connected to
 const int powerLedPin = 8;        // pin the SNES power LED is connected to
 const int mainPowerRelayPin = 6;   // pin for the 5V relay that provides power to the Rpi
-const int piStatusPin = 7;         // pin for telling the pi when it is time to shutdown (shutdown = 0, run = 1)
+const int piStatusPin = 7;         // pin for telling the pi when it is time to shutdown (shutdown = 1, run = 0)
 
 int switchState = 0;         // SNES power switch state
 int switchStatePrevious = 0; // Previous state of power switch
