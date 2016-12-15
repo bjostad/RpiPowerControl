@@ -9,6 +9,9 @@ int switchStatePrevious = 0; // Previous state of power switch
 void setup() {
   pinMode(switchPin, INPUT); // initialize the SNES power switch pin
   pinMode(powerLedPin, OUTPUT);   // initialize the SNES power LED
+  pinMode(mainPowerRelayPin, OUTPUT); //initialize Relay pin
+  digitalWrite(mainPowerRelayPin, HIGH); //Set relay to High as it triggers low
+  pinMode(piStatusPin, OUTPUT); //initialize Pi status pin
   Serial.begin(9600);        // initialize serial
 }
 
@@ -52,7 +55,7 @@ void powerOn(){
 void powerOff(){
   pinLow(powerLedPin);
   pinLow(piStatusPin);
-  delay(3000); //TODO: change from test time of 3sec to 30
+  delay(10000); //TODO: change from test time of 10sec to a reasonable time
   pinHigh(mainPowerRelayPin);  
 }
 
